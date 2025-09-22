@@ -34,7 +34,13 @@ class M3eFab {
     IconData icon = Icons.add,
     Color? color,
     Color? openColor,
-  }) => WithMenu(key: key, child: child, icon: icon, color: color, openColor: openColor);
+  }) => WithMenu(
+    key: key,
+    child: child,
+    icon: icon,
+    color: color,
+    openColor: openColor,
+  );
 }
 
 /* ---------------- 共通テーマ & コア実装（非公開） ---------------- */
@@ -52,11 +58,11 @@ class M3eFabTheme extends ThemeExtension<M3eFabTheme> {
   final Curve curve;
 
   const M3eFabTheme({
-    this.smallSize = const Size(40, 40),
+    this.smallSize = const Size(48, 48),
     this.smallRadius = 12,
-    this.regularSize = const Size(56, 56),
+    this.regularSize = const Size(64, 64),
     this.regularRadius = 16,
-    this.largeSize = const Size(96, 96),
+    this.largeSize = const Size(108, 108),
     this.largeRadius = 28,
     this.elevation = 3,
     this.duration = const Duration(milliseconds: 180),
