@@ -13,6 +13,7 @@ class WithMenu extends StatefulWidget {
   final IconData icon; // 閉じているときのアイコン（デフォルト: add）
   final Color? color; // FABの塗り色。未指定ならテーマに従う
   final Color? openColor; // 開いているときのFAB色。未指定なら color と同じ
+  final bool openAsCircle; // 開いているときにボタン自体を丸にする
 
   const WithMenu({
     super.key,
@@ -20,6 +21,7 @@ class WithMenu extends StatefulWidget {
     required this.icon,
     this.color,
     this.openColor,
+    this.openAsCircle = false,
   });
 
   @override
@@ -83,13 +85,21 @@ class _WithMenuState extends State<WithMenu>
         ? (widget.openColor ?? widget.color)
         : widget.color;
 
-    // トグル用のレギュラーサイズFAB
-    final fab = M3eFabCore(
+    Widget fabCore = M3eFabCore(
       icon: icon,
       color: currentColor,
       size: FabSize.regular,
       onPressed: _toggle,
     );
+
+    // 開いているときに丸ボタンへ（見た目を円形にクリップ＆アニメーション）
+    final fab = (_open && widget.openAsCircle)
+        ? AnimatedContainer(
+            duration: const Duration(milliseconds: 180),
+            curve: Curves.easeOutCubic,
+            child: ClipOval(child: fabCore),
+          )
+        : fabCore;
 
     return Column(
       mainAxisSize: MainAxisSize.min,

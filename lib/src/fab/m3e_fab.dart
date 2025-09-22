@@ -34,12 +34,14 @@ class M3eFab {
     IconData icon = Icons.add,
     Color? color,
     Color? openColor,
+    bool openAsCircle = false,
   }) => WithMenu(
     key: key,
     child: child,
     icon: icon,
     color: color,
     openColor: openColor,
+    openAsCircle: openAsCircle,
   );
 }
 

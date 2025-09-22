@@ -66,6 +66,7 @@ class MyHomePage extends StatelessWidget {
       ),
       floatingActionButton: M3eFab.menu(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             FlexIconButton(
               icon: const Icon(Icons.edit),
@@ -75,22 +76,24 @@ class MyHomePage extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             FlexIconButton(
-              icon: const Icon(Icons.train),
+              icon: const Icon(Icons.share),
               fillColor: primaryColor,
-              text: 'Train',
+              text: 'Share',
               onPressed: () {},
             ),
             const SizedBox(height: 8),
             FlexIconButton(
-              icon: const Icon(Icons.share),
+              icon: const Icon(Icons.calendar_month),
               fillColor: primaryColor,
-              text: 'Share',
+              text: 'Calendar Month',
               onPressed: () {},
             ),
           ],
         ),
         color: Theme.of(context).colorScheme.primary,
         icon: Icons.menu,
+        openColor: Colors.grey.shade400,
+        openAsCircle: true,
       ),
     );
   }
