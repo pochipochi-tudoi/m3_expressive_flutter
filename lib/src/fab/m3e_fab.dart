@@ -2,6 +2,7 @@ library m3e_fab;
 
 import 'package:flutter/material.dart';
 import 'package:m3_expressive_flutter/src/fab/components/large.dart';
+import 'package:m3_expressive_flutter/src/fab/components/menu.dart';
 import 'package:m3_expressive_flutter/src/fab/components/regular.dart';
 import 'package:m3_expressive_flutter/src/fab/components/small.dart';
 
@@ -26,6 +27,14 @@ class M3eFab {
     Color? color,
     required VoidCallback? onPressed,
   }) => Large(icon: icon, color: color, onPressed: onPressed);
+
+  static WithMenu menu({
+    Key? key,
+    required Widget child,
+    IconData icon = Icons.add,
+    Color? color,
+    Color? openColor,
+  }) => WithMenu(key: key, child: child, icon: icon, color: color, openColor: openColor);
 }
 
 /* ---------------- 共通テーマ & コア実装（非公開） ---------------- */

@@ -22,57 +22,76 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Colors.grey;
+
     return Scaffold(
-      appBar: AppBar(title: Text('Demo')),
-      body: Column(children: [_Container(child: const _Fabs())]),
-      floatingActionButton: M3eFab.regular(
-        icon: const Icon(Icons.add),
-        color: Theme.of(context).colorScheme.primary,
-        onPressed: () {},
+      appBar: AppBar(title: const Text('Demo')),
+      body: ListView(
+        padding: const EdgeInsets.all(12),
+        children: [
+          const Text('FABs'),
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              M3eFab.small(
+                icon: const Icon(Icons.add),
+                color: Colors.purple,
+                onPressed: () {},
+              ),
+              M3eFab.regular(
+                icon: const Icon(Icons.add),
+                color: Colors.purple,
+                onPressed: () {},
+              ),
+              M3eFab.large(
+                icon: const Icon(Icons.add),
+                color: Colors.purple,
+                onPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+          const Text('FlexIconButton'),
+          const SizedBox(height: 8),
+          FlexIconButton(
+            icon: const Icon(Icons.edit),
+            fillColor: Theme.of(context).colorScheme.primary,
+            text: 'Edit',
+            onPressed: () {},
+          ),
+        ],
       ),
-    );
-  }
-}
-
-class _Fabs extends StatelessWidget {
-  const _Fabs();
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        M3eFab.small(
-          icon: const Icon(Icons.add),
-          color: Colors.purple,
-          onPressed: () {},
+      floatingActionButton: M3eFab.menu(
+        child: Column(
+          children: [
+            FlexIconButton(
+              icon: const Icon(Icons.edit),
+              fillColor: primaryColor,
+              text: 'Edit',
+              onPressed: () {},
+            ),
+            const SizedBox(height: 8),
+            FlexIconButton(
+              icon: const Icon(Icons.train),
+              fillColor: primaryColor,
+              text: 'Train',
+              onPressed: () {},
+            ),
+            const SizedBox(height: 8),
+            FlexIconButton(
+              icon: const Icon(Icons.share),
+              fillColor: primaryColor,
+              text: 'Share',
+              onPressed: () {},
+            ),
+          ],
         ),
-        M3eFab.regular(
-          icon: const Icon(Icons.add),
-          color: Colors.purple,
-          onPressed: () {},
-        ),
-        M3eFab.large(
-          icon: const Icon(Icons.add),
-          color: Colors.purple,
-          onPressed: () {},
-        ),
-      ],
-    );
-  }
-}
-
-class _Container extends StatelessWidget {
-  final Widget child;
-  const _Container({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.primaryContainer,
-      child: Padding(padding: const EdgeInsets.all(8.0), child: child),
+        color: Theme.of(context).colorScheme.primary,
+        icon: Icons.menu,
+      ),
     );
   }
 }
